@@ -26,6 +26,23 @@
             .catch((error) => console.error("Error:", error));
     }
 
+    // Function to send view data on base URL load
+    function sendBaseUrlViewData() {
+        const baseUrl = window.location.origin; // Get the base URL
+        const viewDataKey = "baseUrl_viewDataSent"; // Unique key to track if view data has been sent
+
+        if (!sessionStorage.getItem(viewDataKey)) {
+            const viewData = {
+                slug: "base-url", // You can modify this slug as necessary
+                token: token,
+            };
+            sendViewData(viewData);
+            sessionStorage.setItem(viewDataKey, "true"); // Mark as sent
+        } else {
+            console.log("View data already sent for the base URL in this session."); // Debugging line
+        }
+    }
+
     // Check if the current URL matches any slug (without protocol) and send an API request if true
     function checkCurrentUrl() {
         const currentPath = window.location.host + window.location.pathname; // Without protocol
@@ -46,9 +63,7 @@
                 sendViewData(viewData);
                 sessionStorage.setItem(viewDataKey, "true"); // Mark as sent
             } else {
-                console.log(
-                    "View data already sent for this user in this session."
-                ); // Debugging line
+                console.log("View data already sent for this user in this session."); // Debugging line
             }
         } else {
             console.log("No matching URL found."); // Debugging line
@@ -115,6 +130,9 @@
 
     // Run setup after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function () {
+        // Send view data for base URL load
+        sendBaseUrlViewData();
+
         // Check URL and trigger API if matching
         checkCurrentUrl();
 
