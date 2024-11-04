@@ -26,9 +26,22 @@
             .catch((error) => console.error("Error:", error));
     }
 
+    function sendBaseViewData(data) {
+        fetch("https://split.esensigroup.com/base-view-api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => console.log("Success:", data))
+            .catch((error) => console.error("Error:", error));
+    }
+
     // Function to send view data on base URL load
     function sendBaseUrlViewData() {
-        const baseUrl = window.location.origin; // Get the base URL
+        var baseUrl = window.location.origin; // Get the base URL
         const viewDataKey = "baseUrl_viewDataSent"; // Unique key to track if view data has been sent
         // Remove the protocol (http:// or https://)
         baseUrl = baseUrl.replace(/^https?:\/\//, '');
@@ -41,7 +54,7 @@
                 slug: baseUrl, // You can modify this slug as necessary
                 token: token,
             };
-            sendViewData(viewData);
+            sendBaseViewData(viewData);
             sessionStorage.setItem(viewDataKey, "true"); // Mark as sent
         } else {
             console.log("View data already sent for the base URL in this session."); // Debugging line
