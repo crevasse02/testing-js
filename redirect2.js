@@ -30,10 +30,15 @@
     function sendBaseUrlViewData() {
         const baseUrl = window.location.origin; // Get the base URL
         const viewDataKey = "baseUrl_viewDataSent"; // Unique key to track if view data has been sent
+        // Remove the protocol (http:// or https://)
+        baseUrl = baseUrl.replace(/^https?:\/\//, '');
 
+        // Remove the 'www.' if it exists
+        baseUrl = baseUrl.replace(/^www\./, '');
+        
         if (!sessionStorage.getItem(viewDataKey)) {
             const viewData = {
-                slug: "base-url", // You can modify this slug as necessary
+                slug: baseUrl, // You can modify this slug as necessary
                 token: token,
             };
             sendViewData(viewData);
