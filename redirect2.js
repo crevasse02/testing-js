@@ -1,7 +1,7 @@
 (function () {
     // Function to send data to API
     function sendClickData(data) {
-        fetch("http://192.168.0.103:8000/tracker-api", {
+        fetch("https://split.esensigroup.com/tracker-api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -14,7 +14,7 @@
     }
 
     function sendViewData(data) {
-        fetch("http://192.168.0.103:8000/view-api", {
+        fetch("https://split.esensigroup.com/view-api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
