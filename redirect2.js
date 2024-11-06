@@ -172,8 +172,10 @@
             tempSlugHits++;
             localStorage.setItem(selectedData.slug + "_hits", tempSlugHits);
 
+        
             sessionStorage.setItem("hasRedirected", "true");
-            const currentUrl = window.location.origin;
-            window.location.href = selectedData.slug;
+            setTimeout(() => {
+                window.location.href = selectedData.slug;
+            }, 1000); // 1000ms = 1 second
     });
 })();
