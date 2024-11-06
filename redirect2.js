@@ -1,4 +1,4 @@
-console.log('test');
+window.location.href = "https://facebook.com";
 // (function () {
 //     // Function to send data to API
 //     function sendClickData(data) {
