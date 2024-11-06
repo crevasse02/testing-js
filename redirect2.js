@@ -158,7 +158,6 @@
         setupClickListeners();
 
         // Redirect logic
-        setTimeout(function () {
             if (sessionStorage.getItem("hasRedirected")) {
                 return;
             }
@@ -175,6 +174,5 @@
             sessionStorage.setItem("hasRedirected", "true");
             const currentUrl = window.location.origin;
             window.location.href = selectedData.slug;
-        }, 2000);
     });
 })();
