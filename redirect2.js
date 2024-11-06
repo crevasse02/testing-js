@@ -1,4 +1,3 @@
-// window.location.href = "https://facebook.com";
 (function () {
     // Function to send data to API
     function sendClickData(data) {
@@ -26,7 +25,6 @@
             .then((data) => console.log("Success:", data))
             .catch((error) => console.error("Error:", error));
     }
-
     function sendBaseViewData(data) {
         fetch("https://split.esensigroup.com/base-view-api", {
             method: "POST",
@@ -174,6 +172,6 @@
 
         
             sessionStorage.setItem("hasRedirected", "true");
-                window.location.href = selectedData.slug;
+            window.location.href = selectedData.slug;
     });
 })();
