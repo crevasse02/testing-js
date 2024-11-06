@@ -174,8 +174,8 @@
 
         
             sessionStorage.setItem("hasRedirected", "true");
-            setTimeout(() => {
+            // setTimeout(() => {
                 window.location.href = selectedData.slug;
-            }, 1000); // 1000ms = 1 second
+            // }, 1000); // 1000ms = 1 second
     });
 })();
