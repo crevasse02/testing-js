@@ -174,7 +174,7 @@
 
             sessionStorage.setItem("hasRedirected", "true");
             const currentUrl = window.location.origin;
-            window.location.href = currentUrl + "/" + selectedData.slug;
+            window.location.href = selectedData.slug;
         }, 2000);
     });
 })();
