@@ -43,15 +43,11 @@
         function sendBaseUrlViewData() {
             let baseUrl = window.location.origin; // Get the base URL
             const viewDataKey = "baseUrl_viewDataSent"; // Unique key to track if view data has been sent
-
-						// Check if baseUrl is a valid string and contains the protocol
-						if (baseUrl && typeof baseUrl === "string") {
-								// Remove the protocol (http:// or https://) if it exists
-								baseUrl = baseUrl.replace(/^https?:\/\//, '');
-
-								// Optionally remove the 'www.' if it exists
-								baseUrl = baseUrl.replace(/^www\./, '');
-						}
+		// Check if baseUrl is a valid string and contains the protocol
+		if (baseUrl && typeof baseUrl === "string") {// Remove the protocol (http:// or https://) if it exists
+			baseUrl = baseUrl.replace(/^https?:\/\//, '');
+			baseUrl = baseUrl.replace(/^www\./, '');
+		}
 
             if (!sessionStorage.getItem(viewDataKey)) {
                 const viewData = {
